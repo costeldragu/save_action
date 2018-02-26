@@ -22,9 +22,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mdc.model.Action.catchParameterCanBeFinal;
 import static com.mdc.model.Action.explicitTypeCanBeDiamond;
 import static com.mdc.model.Action.fieldCanBeFinal;
 import static com.mdc.model.Action.finalPrivateMethod;
+import static com.mdc.model.Action.foreachParameterCanBeFinal;
 import static com.mdc.model.Action.localCanBeFinal;
 import static com.mdc.model.Action.localParameterCanBeFinal;
 import static com.mdc.model.Action.missingOverrideAnnotation;
@@ -101,7 +103,7 @@ public enum ProcessorFactory {
         localCanBeFinal.REPORT_VARIABLES = false;
 
         return new InspectionProcessor(
-                project, psiFile, storage, localParameterCanBeFinal, localCanBeFinal);
+                project, psiFile, storage, foreachParameterCanBeFinal, localCanBeFinal);
     }
 
     @NotNull
@@ -114,7 +116,7 @@ public enum ProcessorFactory {
         localCanBeFinal.REPORT_VARIABLES = false;
 
         return new InspectionProcessor(
-                project, psiFile, storage, localParameterCanBeFinal, localCanBeFinal);
+                project, psiFile, storage, catchParameterCanBeFinal, localCanBeFinal);
     }
 
     @NotNull
